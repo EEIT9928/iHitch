@@ -2,7 +2,7 @@ package model.bean;
 // default package
 // Generated 2018/2/14 �U�� 01:34:38 by Hibernate Tools 5.2.8.Final
 
-import java.util.Arrays;
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -32,10 +32,10 @@ public class Member implements java.io.Serializable {
 	private Character gender;
 	private String country;
 	private Integer birthYear;
-	private byte[] photo;
+	private Blob photo;
 	private String phone;
 	private String bio;
-	private byte[] licensePhoto;
+	private Blob licensePhoto;
 	private Boolean phoneVerified;
 	private Boolean emailVerified;
 	private Boolean licenseVerified;
@@ -72,21 +72,24 @@ public class Member implements java.io.Serializable {
 	public String toString() {
 		return "Member [mid=" + mid + ", email=" + email + ", pwd=" + pwd + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", gender=" + gender + ", country=" + country + ", birthYear=" + birthYear + ", photo="
-				+ Arrays.toString(photo) + ", phone=" + phone + ", bio=" + bio + ", licensePhoto="
-				+ Arrays.toString(licensePhoto) + ", phoneVerified=" + phoneVerified + ", emailVerified="
-				+ emailVerified + ", licenseVerified=" + licenseVerified + ", prefPaPet=" + prefPaPet + ", prefPaSmoke="
-				+ prefPaSmoke + ", prefPaTalk=" + prefPaTalk + ", prefPaMusic=" + prefPaMusic + ", prefDrPet="
-				+ prefDrPet + ", prefDrSmoke=" + prefDrSmoke + ", prefDrTalk=" + prefDrTalk + ", prefDrMusic="
-				+ prefDrMusic + ", currentLv=" + currentLv + ", regisDate=" + regisDate + ", lastLog=" + lastLog
-				+ ", malPoint=" + malPoint + ", rate=" + rate + ", rateReceived=" + rateReceived + ", ridesOffered="
-				+ ridesOffered + "]";
+				+ photo + ", phone=" + phone + ", bio=" + bio + ", licensePhoto=" + licensePhoto + ", phoneVerified="
+				+ phoneVerified + ", emailVerified=" + emailVerified + ", licenseVerified=" + licenseVerified
+				+ ", prefPaPet=" + prefPaPet + ", prefPaSmoke=" + prefPaSmoke + ", prefPaTalk=" + prefPaTalk
+				+ ", prefPaMusic=" + prefPaMusic + ", prefDrPet=" + prefDrPet + ", prefDrSmoke=" + prefDrSmoke
+				+ ", prefDrTalk=" + prefDrTalk + ", prefDrMusic=" + prefDrMusic + ", currentLv=" + currentLv
+				+ ", regisDate=" + regisDate + ", lastLog=" + lastLog + ", malPoint=" + malPoint + ", rate=" + rate
+				+ ", rateReceived=" + rateReceived + ", ridesOffered=" + ridesOffered + "]";
 	}
+
 	
 
 	public Member() {
 	}
 
 	
+
+
+
 
 	public Member(String email, String pwd) {
 		this.email = email;
@@ -169,11 +172,11 @@ public class Member implements java.io.Serializable {
 	}
 
 	@Column(name = "photo")
-	public byte[] getPhoto() {
+	public Blob getPhoto() {
 		return this.photo;
 	}
 
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(Blob photo) {
 		this.photo = photo;
 	}
 
@@ -196,11 +199,11 @@ public class Member implements java.io.Serializable {
 	}
 
 	@Column(name = "licensePhoto")
-	public byte[] getLicensePhoto() {
+	public Blob getLicensePhoto() {
 		return this.licensePhoto;
 	}
 
-	public void setLicensePhoto(byte[] licensePhoto) {
+	public void setLicensePhoto(Blob licensePhoto) {
 		this.licensePhoto = licensePhoto;
 	}
 

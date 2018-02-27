@@ -1,6 +1,6 @@
 package model.bean;
 
-import java.util.Arrays;
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,15 +30,17 @@ public class Chat {
 	private String content;
 
 	@Column(name = "photo")
-	private byte[] photo;
+	private Blob photo;
 
 	@Column(name = "isRead")
 	private Boolean isRead;
 
+
+
 	@Override
 	public String toString() {
 		return "Chat [chatId=" + chatId + ", fromMId=" + fromMId + ", toMid=" + toMid + ", chatDateTime=" + chatDateTime
-				+ ", content=" + content + ", photo=" + Arrays.toString(photo) + ", isRead=" + isRead + "]";
+				+ ", content=" + content + ", photo=" + photo + ", isRead=" + isRead + "]";
 	}
 
 	public Integer getChatId() {
@@ -81,11 +83,11 @@ public class Chat {
 		this.content = content;
 	}
 
-	public byte[] getPhoto() {
+	public Blob getPhoto() {
 		return photo;
 	}
 
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(Blob photo) {
 		this.photo = photo;
 	}
 

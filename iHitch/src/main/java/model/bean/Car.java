@@ -1,6 +1,6 @@
 package model.bean;
 
-import java.util.Arrays;
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +31,7 @@ public class Car {
 	private String color;
 
 	@Column(name = "carDocPhoto")
-	private byte[] carDocPhoto;
+	private Blob carDocPhoto;
 
 	@Column(name = "pcFriendly")
 	private Boolean pcFriendly;
@@ -40,11 +40,13 @@ public class Car {
 	private Integer mid;	
 	
 
+
+
 	@Override
 	public String toString() {
 		return "Car [carId=" + carId + ", carNo=" + carNo + ", carBrand=" + carBrand + ", carType=" + carType
-				+ ", color=" + color + ", carDocPhoto=" + Arrays.toString(carDocPhoto) + ", pcFriendly=" + pcFriendly
-				+ ", mid=" + mid + "]";
+				+ ", color=" + color + ", carDocPhoto=" + carDocPhoto + ", pcFriendly=" + pcFriendly + ", mid=" + mid
+				+ "]";
 	}
 
 	public Integer getCarId() {
@@ -87,11 +89,11 @@ public class Car {
 		this.color = color;
 	}
 
-	public byte[] getCarDocPhoto() {
+	public Blob getCarDocPhoto() {
 		return carDocPhoto;
 	}
 
-	public void setCarDocPhoto(byte[] carDocPhoto) {
+	public void setCarDocPhoto(Blob carDocPhoto) {
 		this.carDocPhoto = carDocPhoto;
 	}
 

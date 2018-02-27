@@ -28,6 +28,7 @@ CREATE TABLE Member (
    phoneVerified	bit DEFAULT 0,
    emailVerified	bit DEFAULT 0,
    licenseVerified	bit DEFAULT 0,
+   account			varchar(30),
    prefPaPet		int DEFAULT 2,
    prefPaSmoke		int DEFAULT 2,
    prefPaTalk		int DEFAULT 2,
