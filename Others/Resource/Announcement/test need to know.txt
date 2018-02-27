@@ -1,0 +1,9 @@
+所有東西都要要測試，並撰寫測試程式碼
+所有東西都要要測試，並撰寫測試程式碼
+所有東西都要要測試，並撰寫測試程式碼
+
+
+所有java程式的測試程式寫在src/test裡 並與被測試的檔案使用相同套件名稱 Class名稱與被測試Class名稱相同並加上+Test(請看src/test/java/model/dao當作參考)
+
+所有網頁應用程式測試程式寫在WEB-INF/website/test 並在jsp檔案後方標柱Test
+
