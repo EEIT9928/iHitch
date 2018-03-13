@@ -21,5 +21,9 @@ public interface CarDAO {
 	Car update(Car bean);
 
 	boolean delete(int id);
+	
+	List<Car> selectMemberCars(int mid);
+
+	Car selectMemberCar(int mid, String carNo);
 
 }

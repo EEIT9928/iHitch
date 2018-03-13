@@ -44,7 +44,7 @@ public class ChatDAOHibernate implements ChatDAO {
 		if (bean != null) {
 			Chat result = this.getSession().get(Chat.class, bean.getChatId());
 			if (result != null) {
-				result.setFromMId(bean.getFromMId());
+				result.setFromMid(bean.getFromMid());
 				result.setToMid(bean.getToMid());
 				result.setChatDateTime(bean.getChatDateTime());
 				result.setContent(bean.getContent());

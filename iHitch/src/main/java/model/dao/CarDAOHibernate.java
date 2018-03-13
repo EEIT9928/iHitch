@@ -18,7 +18,7 @@ public class CarDAOHibernate implements CarDAO {
 
 	@Override
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return this.sessionFactory.getCurrentSession();
 	}
 
 	@Override
@@ -33,8 +33,10 @@ public class CarDAOHibernate implements CarDAO {
 
 	@Override
 	public Car select(String carNo) {
-		return this.getSession().createQuery("FROM Car WHERE carNo= :carNo", Car.class).setParameter("carNo", carNo)
+
+		return  this.getSession().createQuery("FROM Car WHERE carNo= :carNo", Car.class).setParameter("carNo", carNo)
 				.uniqueResult();
+		
 	}
 
 	@Override
@@ -75,6 +77,15 @@ public class CarDAOHibernate implements CarDAO {
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public List<Car>selectMemberCars(int mid){
+		return this.getSession().createQuery("FROM Car WHERE mid= :mid", Car.class).setParameter("mid", mid).list();
+	}
+
+	@Override
+	public Car selectMemberCar(int mid,String carNo){
+		return this.getSession().createQuery("FROM Car WHERE mid= :mid and carNo=:carNo", Car.class).setParameter("mid", mid).setParameter("carNo", carNo).uniqueResult();
 	}
 
 }
