@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.bean.Chat;
+import model.bean.Member;
 import model.dao.superInterface.ChatDAO;
 
-@Repository
+@Repository("chatDAO")
 public class ChatDAOHibernate implements ChatDAO {
 
 	@Autowired
@@ -29,6 +30,34 @@ public class ChatDAOHibernate implements ChatDAO {
 	@Override
 	public List<Chat> select() {
 		return this.getSession().createQuery("FROM Chat", Chat.class).list();
+	}
+
+	@Override
+	public List<Chat> selectContacts(Integer Mid) {
+		if (Mid != null) {
+			return this.getSession().createNativeQuery("SELECT * FROM getContacts(?1)",Chat.class)
+					.setParameter(1, Mid).list();
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Member> selectContactsInfo(Integer Mid) {
+		if (Mid != null) {
+			return this.getSession().createNativeQuery("SELECT * FROM getContactsInfo(?1)",Member.class)
+					.setParameter(1, Mid).list();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Chat> selectByFromToMid(Integer fromMid, Integer toMid) {
+		if (fromMid != null && toMid != null) {
+			return this.getSession().createQuery("FROM Chat WHERE ((fromMid = :fromMid AND toMid = :toMid)"
+						+ " OR (toMid = :fromMid AND fromMid = :toMid))", Chat.class)
+						.setParameter("fromMid", fromMid).setParameter("toMid", toMid).list();
+		}
+		return null;
 	}
 
 	@Override

@@ -10,8 +10,9 @@ import org.springframework.stereotype.Repository;
 import model.bean.Rate;
 import model.dao.superInterface.RateDAO;
 
-@Repository
+@Repository("rateDAO")
 public class RateDAOHibernate implements RateDAO {
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -21,13 +22,34 @@ public class RateDAOHibernate implements RateDAO {
 	}
 
 	@Override
-	public Rate select(int id) {
-		return this.getSession().get(Rate.class, id);
+	public Rate select(Integer id) {
+		if (id != null) {
+			return this.getSession().get(Rate.class, id);
+		}
+		return null;
 	}
 
 	@Override
 	public List<Rate> select() {
 		return this.getSession().createQuery("FROM Rate", Rate.class).list();
+	}
+
+	@Override
+	public List<Rate> selectByToMid(Integer toMid) {
+		if (toMid != null) {
+			return this.getSession().createQuery("FROM Rate WHERE toMid = :toMid", Rate.class)
+					.setParameter("toMid", toMid).list();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Rate> selectByFromMid(Integer fromMid) {
+		if (fromMid != null) {
+			return this.getSession().createQuery("FROM Rate WHERE fromMid = :fromMid", Rate.class)
+					.setParameter("fromMid", fromMid).list();
+		}
+		return null;
 	}
 
 	@Override
@@ -56,11 +78,28 @@ public class RateDAOHibernate implements RateDAO {
 	}
 
 	@Override
-	public boolean delete(int id) {
-		Rate temp = this.getSession().get(Rate.class, id);
-		if (temp != null) {
-			this.getSession().delete(temp);
-			return true;
+	public boolean delete(Integer id) {
+		if (id != null) {
+			Rate temp = this.getSession().get(Rate.class, id);
+			if (temp != null) {
+				this.getSession().delete(temp);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public Boolean isRateExist(Rate bean) {
+		if (bean != null) {
+			if (this.getSession()
+					.createQuery(
+							"FROM Rate WHERE" + " fromMid = :fromMid AND" + " toMid = :toMid AND" + " rideId = :rideId",
+							Rate.class)
+					.setParameter("fromMid", bean.getFromMid()).setParameter("toMid", bean.getToMid())
+					.setParameter("rideId", bean.getRideId()).uniqueResult() != null) {
+				return true;
+			}
 		}
 		return false;
 	}
