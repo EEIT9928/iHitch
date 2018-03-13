@@ -17,7 +17,7 @@ public class PassDetailDAOHibernate implements PassDetailDAO {
 
 	@Override
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return this.sessionFactory.getCurrentSession();
 	}
 
 	@Override
@@ -28,6 +28,10 @@ public class PassDetailDAOHibernate implements PassDetailDAO {
 	@Override
 	public List<PassDetail> select() {
 		return this.getSession().createQuery("FROM PassDetail", PassDetail.class).list();
+	}
+	@Override
+	public List<PassDetail> selectMemberDeatails(int id) {
+		return this.getSession().createQuery("FROM PassDetail WHERE mid=:mid", PassDetail.class).setParameter("mid", id).list();
 	}
 
 	@Override

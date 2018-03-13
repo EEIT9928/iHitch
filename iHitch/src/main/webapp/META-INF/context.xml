@@ -5,5 +5,5 @@
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
                username="sa" password="passw0rd"
                driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-               url="jdbc:sqlserver://localhost:1433;database=iHitch"/>
+               url="jdbc:sqlserver://192.168.21.73:1433;database=iHitch"/>
 </Context>

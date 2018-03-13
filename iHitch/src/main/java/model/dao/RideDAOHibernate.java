@@ -17,7 +17,7 @@ public class RideDAOHibernate implements RideDAO{
 
 	@Override
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return this.sessionFactory.getCurrentSession();
 	}
 
 	@Override
@@ -71,6 +71,10 @@ public class RideDAOHibernate implements RideDAO{
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public List<Ride> selectByDrId(int id){
+		return this.getSession().createQuery("FROM Ride WHERE driverId= :driverId", Ride.class).setParameter("driverId", id).list();
 	}
 
 }

@@ -22,4 +22,5 @@ public interface PassDetailDAO {
 
 	List<PassDetail> selectByRideId(Integer id);
 
+
 }

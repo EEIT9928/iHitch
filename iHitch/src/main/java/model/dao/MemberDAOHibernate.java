@@ -18,7 +18,7 @@ public class MemberDAOHibernate implements MemberDAO {
 
 	@Override
 	public Session getSession() {
-		return sessionFactory.getCurrentSession();
+		return this.sessionFactory.getCurrentSession();
 	}
 
 	@Override
