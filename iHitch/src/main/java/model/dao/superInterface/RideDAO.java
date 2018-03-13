@@ -19,5 +19,6 @@ public interface RideDAO {
 	Ride update(Ride bean);
 
 	boolean delete(int id);
-
+	
+	List<Ride> selectByDrId(int id);
 }

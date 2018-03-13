@@ -27,10 +27,10 @@ public class Rate {
 	@Column(name = "comment", columnDefinition = "VARCHAR(MAX)")
 	private String comment;
 
-	@Column(name = "rateDate")
+	@Column(name = "rateDate", insertable = false)
 	private java.util.Date rateDate;
 
-	@Column(name = "rated")
+	@Column(name = "rated", insertable = false)
 	private Boolean rated;
 
 	@Column(name = "rideId", nullable = false)

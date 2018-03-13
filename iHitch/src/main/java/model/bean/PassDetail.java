@@ -17,8 +17,8 @@ public class PassDetail {
 
 	@Column(name = "mid", nullable = false)
 	private Integer mid;
-	
-	@Column(name="rideId",nullable = false)
+
+	@Column(name = "rideId", nullable = false)
 	private Integer rideId;
 
 	@Column(name = "seatsBooked", nullable = false)
@@ -83,6 +83,5 @@ public class PassDetail {
 	public void setConfirmed(Boolean confirmed) {
 		this.confirmed = confirmed;
 	}
-
 
 }
