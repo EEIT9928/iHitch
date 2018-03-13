@@ -1,5 +1,6 @@
 package model.bean;
 // default package
+
 // Generated 2018/2/14 �U�� 01:34:38 by Hibernate Tools 5.2.8.Final
 
 import java.sql.Blob;
@@ -23,7 +24,7 @@ import javax.persistence.UniqueConstraint;
 public class Member implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer mid;
 	private String email;
 	private String pwd;
@@ -51,23 +52,23 @@ public class Member implements java.io.Serializable {
 	private Date regisDate;
 	private Date lastLog;
 	private Integer malPoint;
-	private Long rate;
+	private Double rate;
 	private Integer rateReceived;
 	private Integer ridesOffered;
-//	private Set<Car> cars = new HashSet<>(0);
-//	private Set alerts = new HashSet(0);
-//	private Set blockListsForFromMid = new HashSet(0);
-//	private Set faqs = new HashSet(0);
-//	private Set chatsForToMid = new HashSet(0);
-//	private Set blackListsForFromMid = new HashSet(0);
-//	private Set passDetails = new HashSet(0);
-//	private Set blackListsForToMid = new HashSet(0);
-//	private Set chatsForFromMid = new HashSet(0);
-//	private Set rides = new HashSet(0);
-//	private Set blockListsForToMid = new HashSet(0);
-//	private Set ratesForToMid = new HashSet(0);
-//	private Set ratesForFromMid = new HashSet(0);
-	
+	// private Set<Car> cars = new HashSet<>(0);
+	// private Set alerts = new HashSet(0);
+	// private Set blockListsForFromMid = new HashSet(0);
+	// private Set faqs = new HashSet(0);
+	// private Set chatsForToMid = new HashSet(0);
+	// private Set blackListsForFromMid = new HashSet(0);
+	// private Set passDetails = new HashSet(0);
+	// private Set blackListsForToMid = new HashSet(0);
+	// private Set chatsForFromMid = new HashSet(0);
+	// private Set rides = new HashSet(0);
+	// private Set blockListsForToMid = new HashSet(0);
+	// private Set ratesForToMid = new HashSet(0);
+	// private Set ratesForFromMid = new HashSet(0);
+
 	@Override
 	public String toString() {
 		return "Member [mid=" + mid + ", email=" + email + ", pwd=" + pwd + ", firstName=" + firstName + ", lastName="
@@ -81,22 +82,14 @@ public class Member implements java.io.Serializable {
 				+ ", rateReceived=" + rateReceived + ", ridesOffered=" + ridesOffered + "]";
 	}
 
-	
-
 	public Member() {
 	}
-
-	
-
-
-
 
 	public Member(String email, String pwd) {
 		this.email = email;
 		this.pwd = pwd;
 	}
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mid", unique = true, nullable = false)
@@ -345,11 +338,11 @@ public class Member implements java.io.Serializable {
 	}
 
 	@Column(name = "rate", precision = 18, scale = 0)
-	public Long getRate() {
+	public Double getRate() {
 		return this.rate;
 	}
 
-	public void setRate(Long rate) {
+	public void setRate(Double rate) {
 		this.rate = rate;
 	}
 

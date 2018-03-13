@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import model.bean.Ride;
 import model.dao.superInterface.RideDAO;
 
-@Repository
+@Repository("rideDAO")
 public class RideDAOHibernate implements RideDAO{
 	@Autowired
 	private SessionFactory sessionFactory;

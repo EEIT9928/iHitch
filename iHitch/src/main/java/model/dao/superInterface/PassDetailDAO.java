@@ -20,4 +20,6 @@ public interface PassDetailDAO {
 
 	boolean delete(int id);
 
+	List<PassDetail> selectByRideId(Integer id);
+
 }

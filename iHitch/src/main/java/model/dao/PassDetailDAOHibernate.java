@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import model.bean.PassDetail;
 import model.dao.superInterface.PassDetailDAO;
 
-@Repository
+@Repository("passDetailDAO")
 public class PassDetailDAOHibernate implements PassDetailDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -28,6 +28,15 @@ public class PassDetailDAOHibernate implements PassDetailDAO {
 	@Override
 	public List<PassDetail> select() {
 		return this.getSession().createQuery("FROM PassDetail", PassDetail.class).list();
+	}
+
+	@Override
+	public List<PassDetail> selectByRideId(Integer id) {
+		if (id != null) {
+			return this.getSession().createQuery("FROM PassDetail WHERE " + "rideId = :rideId", PassDetail.class)
+					.setParameter("rideId", id).list();
+		}
+		return null;
 	}
 
 	@Override
@@ -53,11 +62,11 @@ public class PassDetailDAOHibernate implements PassDetailDAO {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public boolean delete(int id) {
 		PassDetail temp = this.getSession().get(PassDetail.class, id);
-		if(temp!=null) {
+		if (temp != null) {
 			this.getSession().delete(temp);
 			return true;
 		}

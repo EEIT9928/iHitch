@@ -21,7 +21,7 @@ public class ChatTest {
 			System.out.println("---------------SELECT BY ID---------------");
 			
 			Chat insert = new Chat();
-			insert.setFromMId(6);
+			insert.setFromMid(6);
 			insert.setToMid(8);
 			insert.setChatDateTime(new java.util.Date());
 			System.out.println(dao.insert(insert));

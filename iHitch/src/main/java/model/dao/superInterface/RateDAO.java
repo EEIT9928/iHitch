@@ -10,7 +10,7 @@ public interface RateDAO {
 
 	Session getSession();
 
-	Rate select(int id);
+	Rate select(Integer id);
 
 	List<Rate> select();
 
@@ -18,6 +18,12 @@ public interface RateDAO {
 
 	Rate update(Rate bean);
 
-	boolean delete(int id);
+	boolean delete(Integer id);
+
+	Boolean isRateExist(Rate bean);
+
+	List<Rate> selectByFromMid(Integer fromMid);
+
+	List<Rate> selectByToMid(Integer toMid);
 
 }

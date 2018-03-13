@@ -20,4 +20,10 @@ public interface BlockListDAO {
 
 	boolean delete(int id);
 
+	List<BlockList> selectByFromMid(Integer fromMid);
+
+	List<BlockList> selectByToMid(Integer toMid);
+
+	Boolean isBlockExist(BlockList bean);
+
 }

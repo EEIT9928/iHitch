@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import model.bean.BlockList;
 import model.dao.superInterface.BlockListDAO;
 
-@Repository
+@Repository("blockListDao")
 public class BlockListDAOHibernate implements BlockListDAO {
 
 	@Autowired
@@ -29,6 +29,37 @@ public class BlockListDAOHibernate implements BlockListDAO {
 	@Override
 	public List<BlockList> select() {
 		return this.getSession().createQuery("From BlockList", BlockList.class).list();
+	}
+
+	@Override
+	public List<BlockList> selectByFromMid(Integer fromMid) {
+		if (fromMid != null) {
+			return this.getSession().createQuery("FROM BlockList WHERE fromMid = :fromMid", BlockList.class)
+					.setParameter("fromMid", fromMid).list();
+		}
+		return null;
+	}
+
+	@Override
+	public List<BlockList> selectByToMid(Integer toMid) {
+		if (toMid != null) {
+			return this.getSession().createQuery("FROM BlockList WHERE toMid = :toMid", BlockList.class)
+					.setParameter("toMid", toMid).list();
+		}
+		return null;
+	}
+
+	@Override
+	public Boolean isBlockExist(BlockList bean) {
+		if (bean != null && bean.getFromMid() != null && bean.getToMid() != null) {
+			if (this.getSession()
+					.createQuery("FROM BlockList WHERE fromMid = :fromMid AND toMid = :toMid", BlockList.class)
+					.setParameter("fromMid", bean.getFromMid()).setParameter("toMid", bean.getToMid())
+					.uniqueResult() != null) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override

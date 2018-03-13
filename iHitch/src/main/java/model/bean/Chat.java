@@ -18,12 +18,12 @@ public class Chat {
 	private Integer chatId;
 
 	@Column(name = "fromMid", nullable = false)
-	private Integer fromMId;
+	private Integer fromMid;
 
 	@Column(name = "toMid", nullable = false)
 	private Integer toMid;
 
-	@Column(name = "chatDateTime", nullable = false)
+	@Column(name = "chatDateTime", nullable = false, insertable = false)
 	private java.util.Date chatDateTime;
 
 	@Column(name = "content", columnDefinition = "VARCHAR(MAX)")
@@ -32,14 +32,12 @@ public class Chat {
 	@Column(name = "photo")
 	private Blob photo;
 
-	@Column(name = "isRead")
+	@Column(name = "isRead", insertable = false)
 	private Boolean isRead;
-
-
 
 	@Override
 	public String toString() {
-		return "Chat [chatId=" + chatId + ", fromMId=" + fromMId + ", toMid=" + toMid + ", chatDateTime=" + chatDateTime
+		return "Chat [chatId=" + chatId + ", fromMid=" + fromMid + ", toMid=" + toMid + ", chatDateTime=" + chatDateTime
 				+ ", content=" + content + ", photo=" + photo + ", isRead=" + isRead + "]";
 	}
 
@@ -51,12 +49,12 @@ public class Chat {
 		this.chatId = chatId;
 	}
 
-	public Integer getFromMId() {
-		return fromMId;
+	public Integer getFromMid() {
+		return fromMid;
 	}
 
-	public void setFromMId(Integer fromMId) {
-		this.fromMId = fromMId;
+	public void setFromMid(Integer fromMid) {
+		this.fromMid = fromMid;
 	}
 
 	public Integer getToMid() {

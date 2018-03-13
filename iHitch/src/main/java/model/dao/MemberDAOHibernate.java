@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import model.bean.Member;
 import model.dao.superInterface.MemberDAO;
 
-@Repository
+@Repository("memberDAO")
 public class MemberDAOHibernate implements MemberDAO {
 
 	@Autowired
@@ -35,9 +35,8 @@ public class MemberDAOHibernate implements MemberDAO {
 	public Member select(String email) {
 		return this.getSession().createQuery("FROM Member WHERE email= :email", Member.class)
 				.setParameter("email", email).uniqueResult();
-
 	}
-
+	
 	@Override
 	public Integer insert(Member bean) {
 		if (bean != null) {
